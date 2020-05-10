@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -29,6 +30,41 @@ namespace BBPapp
                 {
                      await Navigation.PopAsync();
                     mycode.Text = result.Text;
+                    JObject o = JObject.Parse(result.Text);
+                    string product = (string)o["product"];
+                    string barcode = (string)o["barcode"];
+                    string releaseDate = (string)o["releaseDate"];
+                    bool issued = (bool)o["issued"];
+                    IList<string> person = o["person"].Select(t => (string)t).ToList();
+
+                    jsonresult.Text += product;
+                    jsonresult.Text += "\n";
+
+                
+                    jsonresult.Text += barcode;
+                    jsonresult.Text += "\n";
+
+                   
+                    jsonresult.Text += releaseDate;
+                    jsonresult.Text += "\n";
+
+                    
+                    jsonresult.Text += issued;
+                    jsonresult.Text += "\n";
+
+                    jsonresult.Text += issued;
+
+                    
+                   
+                    foreach (var i in person)
+                    {
+                        jsonresult.Text += i;
+                        jsonresult.Text += "\n";
+                    }
+                    
+
+
+
                 }
                 );
             };

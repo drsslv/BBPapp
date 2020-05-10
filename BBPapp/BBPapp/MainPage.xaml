@@ -9,6 +9,7 @@
     <StackLayout>
         <Button Text="SCAN QR" Clicked="Button_Clicked"/>
         <Label Text="" x:Name="mycode" TextColor="red" HorizontalOptions="Center"/>
+        <Label Text="" x:Name="jsonresult" TextColor="blue" HorizontalOptions="Center"/>
     </StackLayout>
 
 </ContentPage>
